@@ -2526,6 +2526,11 @@ export class CloudflareMetricsClient {
 	 * Hostname-level HTTP metrics (requests, status, cache, latency) for allowlisted hosts.
 	 * Uses a fixed 1-minute window anchored by hostMetricsDelaySeconds for alerting-friendly resolution.
 	 *
+	 * Filtered to `requestSource: "eyeball"` so only end-user traffic is counted. This excludes
+	 * actions taken by Cloudflare products (cache purge/revalidation, health checks, Workers
+	 * subrequests), which otherwise surface spurious edge-cache 5xx responses (e.g. 502/504) in
+	 * the per-status breakdown.
+	 *
 	 * @param zoneIds Zone IDs to query.
 	 * @param zones Zone metadata for label mapping.
 	 * @param anchor Shared time range providing the maxtime anchor.
