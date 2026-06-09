@@ -422,6 +422,8 @@ Requires `HOST_METRICS_ALLOWLIST` to be set (max 50 hostnames). Disabled when `E
 
 All hostname metrics are **gauge snapshots** of the **last completed minute**, designed for alerting. The ingestion delay is controlled by `HOST_METRICS_DELAY_SECONDS` (default: 60s) independently from the global `SCRAPE_DELAY_SECONDS`. Hosts with zero traffic in the minute will not emit series.
 
+Hostname metrics are filtered to end-user traffic only (`requestSource: "eyeball"`). This excludes actions taken by Cloudflare products (cache purge/revalidation, health checks, Workers subrequests), so the per-status breakdown no longer counts Cloudflare's internal edge-cache 5xx responses (e.g. [502/504](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502-504)).
+
 **Request counts:**
 
 | Metric | Type | Labels | Description |

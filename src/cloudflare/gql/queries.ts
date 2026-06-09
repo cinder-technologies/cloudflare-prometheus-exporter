@@ -711,6 +711,7 @@ export const HostnameHttpMetricsQuery = graphql(`
             datetime_geq: $mintime
             datetime_lt: $maxtime
             clientRequestHTTPHost_in: $hosts
+            requestSource: "eyeball"
           }
         ) {
           count
@@ -725,6 +726,7 @@ export const HostnameHttpMetricsQuery = graphql(`
             datetime_geq: $mintime
             datetime_lt: $maxtime
             clientRequestHTTPHost_in: $hosts
+            requestSource: "eyeball"
           }
         ) {
           count
@@ -740,6 +742,7 @@ export const HostnameHttpMetricsQuery = graphql(`
             datetime_geq: $mintime
             datetime_lt: $maxtime
             clientRequestHTTPHost_in: $hosts
+            requestSource: "eyeball"
           }
         ) {
           count
@@ -755,6 +758,7 @@ export const HostnameHttpMetricsQuery = graphql(`
             datetime_geq: $mintime
             datetime_lt: $maxtime
             clientRequestHTTPHost_in: $hosts
+            requestSource: "eyeball"
           }
         ) {
           dimensions {
